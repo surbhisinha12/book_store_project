@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surbhi Bookstore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-left">
+    <div class="logo-icon">📚</div>
+    <div class="brand">
+      <h1>Surbhi Sinha</h1>
+      <p>Bookstore &amp; More</p>
+    </div>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ══ NAV / LINK DIVISION ══ -->
+<nav id="main-nav">
+  <a href="#" class="active" data-page="home"onclick="showPage('home',this)">🏠 Home</a>
+  <a href="#"data-page="books"   onclick="showPage('books',this)">📖 List of Books</a>
+  <a href="#"data-page="register"onclick="showPage('register',this)">📝 Registration</a>
+  <a href="#"data-page="feedback"onclick="showPage('feedback',this)">💬 Feedback</a>
+</nav>
+
+<!-- ══ HOME ══ -->
+<div class="page active" id="page-home">
+  <div class="page-inner">
+    <div class="home-hero">
+      <span class="tag">✦ Welcome to Surbhi Book Store</span>
+      <h2>Your Next Great Read<br>Starts <em>Right Here</em></h2>
+      <p>Browse our curated collection of thousands of titles — from bestselling fiction to academic texts. Quality books at unbeatable prices, delivered to your doorstep.</p>
+      <button class="hero-btn" onclick="showPage('books', document.querySelector('[data-page=books]'))">Browse Books →</button>
+    </div>
+    <div class="home-cards">
+      <div class="home-card"><div class="ic">📚</div><h3>Vast Collection</h3><p>Thousands of titles across all genres for every reader.</p></div>
+      <div class="home-card"><div class="ic">🚚</div><h3>Fast Delivery</h3><p>Orders dispatched in 24 hrs. Free shipping over ₹499.</p></div>
+      <div class="home-card"><div class="ic">💳</div><h3>Best Prices</h3><p>Competitive prices with regular discounts and rewards.</p></div>
+      <div class="home-card"><div class="ic">⭐</div><h3>Trusted Store</h3><p>50,000+ happy customers. Rated 4.9/5 for quality.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LIST OF BOOKS ══ -->
+<div class="page" id="page-books">
+  <div class="page-inner">
+    <h2 class="section-title">List of Books</h2>
+    <p class="section-sub">All titles in lexicographic (A–Z) order. Search by title, author, or year.</p>
+
+    <div class="search-bar-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="book-search" placeholder="Search by title, author or year…" oninput="searchBooks()" autocomplete="off"/>
+      <button id="clear-search" onclick="clearSearch()">✕ Clear</button>
+    </div>
+    <p class="search-count" id="search-count"></p>
+
+    <div class="table-wrap">
+      <table id="books-table">
+        <thead>
+          <tr>
+            <th>#</th><th>Book Title</th><th>First Author</th><th>Year</th><th>Price</th>
+          </tr>
+        </thead>
+        <tbody id="books-tbody">
+          <tr>
+            <td data-label="#">1</td>
+            <td data-label="Title">Artificial Intelligence: A Modern Approach</td>
+            <td data-label="Author">Stuart Russell</td>
+            <td data-label="Year"><span class="year-chip">2020</span></td>
+            <td data-label="Price"><span class="price-badge">₹899</span></td>
+          </tr>
+          <tr>
+            <td data-label="#">2</td>
+            <td data-label="Title">Clean Code: A Handbook of Agile Software</td>
+            <td data-label="Author">Robert C. Martin</td>
+            <td data-label="Year"><span class="year-chip">2008</span></td>
+            <td data-label="Price"><span class="price-badge">₹649</span></td>
+          </tr>
+          <tr>
+            <td data-label="#">3</td>
+            <td data-label="Title">Computer Networks</td>
+            <td data-label="Author">Andrew S. Tanenbaum</td>
+            <td data-label="Year"><span class="year-chip">2010</span></td>
+            <td data-label="Price"><span class="price-badge">₹799</span></td>
+          </tr>
+          <tr>
+            <td data-label="#">4</td>
+            <td data-label="Title">Data Structures and Algorithms in Java</td>
+            <td data-label="Author">Michael T. Goodrich</td>
+            <td data-label="Year"><span class="year-chip">2014</span></td>
+            <td data-label="Price"><span class="price-badge">₹749</span></td>
+          </tr>
+          <tr>
+            <td data-label="#">5</td>
+            <td data-label="Title">Design Patterns: Elements of Reusable Software</td>
+            <td data-label="Author">Erich Gamma</td>
+            <td data-label="Year"><span class="year-chip">1994</span></td>
+            <td data-label="Price"><span class="price-badge">₹699</span></td>
+          </tr>
+          <tr>
+            <td data-label="#">6</td>
+            <td data-label="Title">Head First HTML and CSS</td>
+            <td data-label="Author">Elisabeth Robson</td>
+            <td data-label="Year"><span class="year-chip">2012</span></td>
+            <td data-label="Price"><span class="price-badge">₹549</span></td>
+          </tr>
+          <tr>
+            <td data-label="#">7</td>
+            <td data-label="Title">Introduction to Algorithms</td>
+            <td data-label="Author">Thomas H. Cormen</td>
+            <td data-label="Year"><span class="year-chip">2009</span></td>
+            <td data-label="Price"><span class="price-badge">₹999</span></td>
+          </tr>
+          <tr>
+            <td data-label="#">8</td>
+            <td data-label="Title">JavaScript: The Good Parts</td>
+            <td data-label="Author">Douglas Crockford</td>
+            <td data-label="Year"><span class="year-chip">2008</span></td>
+            <td data-label="Price"><span class="price-badge">₹399</span></td>
+          </tr>
+          <tr>
+            <td data-label="#">9</td>
+            <td data-label="Title">Learning Python</td>
+            <td data-label="Author">Mark Lutz</td>
+            <td data-label="Year"><span class="year-chip">2013</span></td>
+            <td data-label="Price"><span class="price-badge">₹849</span></td>
+          </tr>
+          <tr>
+            <td data-label="#">10</td>
+            <td data-label="Title">Operating System Concepts</td>
+            <td data-label="Author">Abraham Silberschatz</td>
+            <td data-label="Year"><span class="year-chip">2018</span></td>
+            <td data-label="Price"><span class="price-badge">₹879</span></td>
+          </tr>
+          <tr>
+            <td data-label="#">11</td>
+            <td data-label="Title">The Pragmatic Programmer</td>
+            <td data-label="Author">David Thomas</td>
+            <td data-label="Year"><span class="year-chip">2019</span></td>
+            <td data-label="Price"><span class="price-badge">₹599</span></td>
+          </tr>
+          <tr>
+            <td data-label="#">12</td>
+            <td data-label="Title">Web Development with Node.js</td>
+            <td data-label="Author">Shelley Powers</td>
+            <td data-label="Year"><span class="year-chip">2016</span></td>
+            <td data-label="Price"><span class="price-badge">₹649</span></td>
+          </tr>
+          <tr class="no-results-row" id="no-results-row" style="display:none;">
+            <td colspan="5" style="text-align:center;padding:2.5rem 1rem;color:var(--mid);font-size:0.92rem;">
+              📭 No books found for <strong id="no-results-term"></strong>. Try a different keyword.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CUSTOMER REGISTRATION ══ -->
+<div class="page" id="page-register">
+  <div class="page-inner">
+    <div class="form-card" id="reg-form-card">
+      <h2 id="reg-title">Customer Registration</h2>
+      <p class="sub" id="reg-subtitle">Create your account to start shopping and enjoy exclusive benefits.</p>
+
+      <div class="error-msg" id="reg-error"></div>
+
+      <div class="form-group" id="fg-name">
+        <label for="reg-name">Full Name <span>*</span></label>
+        <input type="text" id="reg-name" placeholder="e.g. Rahul Sharma"/>
+      </div>
+
+      <div class="form-group" id="fg-interest">
+        <label>Interest in Books <span>*</span> <small style="font-weight:400;color:var(--mid)">(select at least one)</small></label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="interest" value="Fiction"> Fiction</label>
+          <label><input type="checkbox" name="interest" value="Non-Fiction"> Non-Fiction</label>
+          <label><input type="checkbox" name="interest" value="Science"> Science</label>
+          <label><input type="checkbox" name="interest" value="Technology"> Technology</label>
+          <label><input type="checkbox" name="interest" value="History"> History</label>
+          <label><input type="checkbox" name="interest" value="Self-Help"> Self-Help</label>
+          <label><input type="checkbox" name="interest" value="Comics"> Comics</label>
+          <label><input type="checkbox" name="interest" value="Poetry"> Poetry</label>
+        </div>
+      </div>
+
+      <div class="form-group" id="fg-phone">
+        <label for="reg-phone">Contact Number <span>*</span></label>
+        <input type="tel" id="reg-phone" placeholder="10-digit mobile number" maxlength="10"/>
+      </div>
+
+      <button class="submit-btn" id="reg-submit-btn" onclick="validateRegistration()">Submit Registration</button>
+
+      <!-- SUCCESS BANNER with Feedback CTA -->
+      <div class="reg-success-box" id="reg-success">
+        <div class="check-icon">🎉</div>
+        <h3>Welcome, <span class="reg-name-display" id="reg-welcome-name"></span>!</h3>
+        <p>
+          Your registration was successful — you're now part of the PageTurner family!<br>
+          We'd love to hear your first impressions. Share a quick feedback with us.
+        </p>
+        <button class="feedback-cta-btn" onclick="goToFeedbackFromReg()">
+          💬 Share Your Feedback
+        </button>
+        <span class="skip-link" onclick="resetRegForm()">Maybe later, register another →</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FEEDBACK ══ -->
+<div class="page" id="page-feedback">
+  <div class="page-inner">
+    <div class="form-card">
+      <h2>Share Your Feedback</h2>
+      <p class="sub">We value your opinion! Help us improve your shopping experience.</p>
+
+      <div class="error-msg" id="fb-error"></div>
+
+      <div class="form-group">
+        <label for="fb-name">Your Name <span>*</span></label>
+        <input type="text" id="fb-name" placeholder="Enter your name"/>
+      </div>
+
+      <div class="form-group">
+        <label for="fb-text">Your Feedback <span>*</span></label>
+        <textarea id="fb-text" placeholder="Tell us about your experience with PageTurner Bookstore…"></textarea>
+      </div>
+
+      <button class="submit-btn" onclick="validateFeedback()">Submit Feedback</button>
+
+      <div class="success-msg" id="fb-success">
+        ✅ Thank you for your feedback! We appreciate you taking the time to share your thoughts.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  &copy; 2025 <span>Surbhi Bookstore</span> &nbsp;|&nbsp; MCSL-016 Project  &nbsp;|&nbsp; BCA(IV) 2025-26
+</footer>
+<script src = "index.js"></script>
+</body>
+</html>
